@@ -2,7 +2,7 @@ from .api import *
 import sys
 import locale
 
-def get_general(users, api):
+def get_general(users, count, api):
     """Get general information about Twitter user"""
 
     # set locale
@@ -12,7 +12,7 @@ def get_general(users, api):
         # get information from api
         try:
             user = api.get_user(handle)
-            timeline = api.user_timeline(handle, count=3)
+            timeline = api.user_timeline(handle, count=count)
         except tweepy.TweepError:
             print("Error: Couldn't query tweepy API. Quitting!")
             sys.exit(1)
@@ -29,7 +29,7 @@ def get_general(users, api):
         print("    Location: %s" % user.location)
         print("    Followers: %s" % followers_count)
         print("    Following: %s" % friends_count)
-        print("    Last three tweets: ")
+        print("    Last %d tweets: " % count)
         for tweet in timeline:
             print("     %s" % tweet.text)
             print('\t    via %s' % tweet.source)
