@@ -3,14 +3,14 @@ import tweepy
 import json
 import os.path
 import webbrowser as wb
-from consumer import CONSUMER_KEY, CONSUMER_SECRET
+from . import consumer
 
 
 def store_access_token():
     """Get Access Token and store in .json file"""
 
     # create oauth handler
-    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth = tweepy.OAuthHandler(consumer.CONSUMER_KEY, consumer.CONSUMER_SECRET)
 
     try:
         wb.open(auth.get_authorization_url())
@@ -43,10 +43,8 @@ def get_api():
     except FileNotFoundError:
         print("Error: couldn't find credentials file")
 
-    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth = tweepy.OAuthHandler(consumer.CONSUMER_KEY, consumer.CONSUMER_SECRET)
     auth.set_access_token(access_token[0], access_token[1])
     api = tweepy.API(auth)
     return api
 
-api = get_api()
-api.update_status('test')

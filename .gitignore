@@ -92,3 +92,4 @@ ENV/
 
 .idea/
 twitalytics/consumer.py
+*.json
