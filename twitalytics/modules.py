@@ -18,8 +18,8 @@ def get_general(users, api):
             sys.exit(1)
 
         # get human-readable forms of potentially large numbers
-        followers_count = (locale.format('%d', int(user.followers_count), grouping=True))
-        friends_count = str(locale.format('%d', int(user.friends_count), grouping=True))
+        followers_count = locale.format('%d', int(user.followers_count), grouping=True)
+        friends_count = locale.format('%d', int(user.friends_count), grouping=True)
         
         # print information
         print("Information about %s: " % handle)

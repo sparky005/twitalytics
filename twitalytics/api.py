@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import tweepy
 import json
 import os.path
@@ -24,6 +23,7 @@ def store_access_token():
 
     with open('twitter_credentials.json', 'w') as f:
         # save the access token
+        # TODO: save the creds in a better place
         json.dump(access_token, f)
 
 
