@@ -1,3 +1,4 @@
+import sys
 import argparse
 from .modules import *
 from .api import *
@@ -19,7 +20,17 @@ def parse_arguments():
 def main():
     api = get_api()
     args = parse_arguments()
-    if args.test:
-        print("test confirmed")
-    if args.users:
-        get_general(args.users, args.count, args.print, api)
+    # do API stuff here so we only do it once per user
+    for handle in args.users:
+        # get information from api
+        try:
+            user = api.get_user(handle)
+            timeline = get_timeline(handle, args.count, api)
+        except tweepy.TweepError:
+            print("Error: Couldn't query tweepy API. Quitting!")
+            sys.exit(1)
+
+        if args.test:
+            print("test confirmed")
+        if args.users:
+            get_general(user, timeline, args.print)

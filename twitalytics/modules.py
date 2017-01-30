@@ -1,45 +1,7 @@
-import sys
 import locale
-from .api import *
 
 
-def get_general(users, count, print_tweets, api):
-    """Get general information about Twitter user"""
-
-    for handle in users:
-        # get information from api
-        try:
-            user = api.get_user(handle)
-            timeline = get_timeline(handle, count, api)
-        except tweepy.TweepError:
-            print("Error: Couldn't query tweepy API. Quitting!")
-            sys.exit(1)
-
-        print_general(user, timeline, count, print_tweets)
-
-
-def get_devices():
-    """Get top devices that user tweets from"""
-    pass
-
-
-def get_locations():
-    """Get top locations that user tweets from"""
-    pass
-
-
-def get_topics():
-    """Get top topics the user tweets about"""
-    pass
-
-
-def get_twp():
-    """Get tweets per day"""
-    pass
-
-
-"""Helper functions"""
-def print_general(user, timeline, count, print_tweets):
+def get_general(user, timeline, print_tweets):
     """Print general information"""
 
     # set locale
@@ -60,10 +22,29 @@ def print_general(user, timeline, count, print_tweets):
 
     # print tweets if requested
     if print_tweets:
-        print("    Last %d tweets: " % count)
+        print("    Last tweets: ")
         for tweet in timeline:
             print("     %s" % tweet.text)
             print('\t    via %s' % tweet.source)
 
     # print newline to separate multiple users
     print()
+
+def get_devices():
+    """Get top devices that user tweets from"""
+    pass
+
+
+def get_locations():
+    """Get top locations that user tweets from"""
+    pass
+
+
+def get_topics():
+    """Get top topics the user tweets about"""
+    pass
+
+
+def get_twp():
+    """Get tweets per day"""
+    pass
