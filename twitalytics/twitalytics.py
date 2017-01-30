@@ -1,7 +1,7 @@
 import argparse
-import sys
 from .modules import *
 from .api import *
+
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
@@ -13,6 +13,7 @@ def parse_arguments():
         sys.exit(1)
     args = parser.parse_args()
     return args
+
 
 def main():
     api = get_api()
