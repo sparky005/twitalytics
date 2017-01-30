@@ -3,7 +3,7 @@ import locale
 from .api import *
 
 
-def get_general(users, count, api):
+def get_general(users, count, print_tweets, api):
     """Get general information about Twitter user"""
 
     for handle in users:
@@ -15,7 +15,7 @@ def get_general(users, count, api):
             print("Error: Couldn't query tweepy API. Quitting!")
             sys.exit(1)
 
-        print_general(user, timeline, count)
+        print_general(user, timeline, count, print_tweets)
 
 
 def get_devices():
@@ -39,7 +39,7 @@ def get_twp():
 
 
 """Helper functions"""
-def print_general(user, timeline, count):
+def print_general(user, timeline, count, print_tweets):
     """Print general information"""
 
     # set locale
@@ -57,8 +57,13 @@ def print_general(user, timeline, count):
     print("    Location: %s" % user.location)
     print("    Followers: %s" % followers_count)
     print("    Following: %s" % friends_count)
-    print("    Last %d tweets: " % count)
-    for tweet in timeline:
-        print("     %s" % tweet.text)
-        print('\t    via %s' % tweet.source)
+
+    # print tweets if requested
+    if print_tweets:
+        print("    Last %d tweets: " % count)
+        for tweet in timeline:
+            print("     %s" % tweet.text)
+            print('\t    via %s' % tweet.source)
+
+    # print newline to separate multiple users
     print()
