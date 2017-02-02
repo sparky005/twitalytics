@@ -34,7 +34,7 @@ def parse_arguments():
         action='store_true',
         help="Print gathered tweets"
     )
-    if len(sys.argv)==1:
+    if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
     args = parser.parse_args()

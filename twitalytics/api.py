@@ -51,13 +51,9 @@ def get_api():
 
 def get_timeline(user, count, api):
     """Get user timeline"""
-    if count>200:
-        page_list, timeline = [], []
-        for page in tweepy.Cursor(api.user_timeline, user, count=200).pages(16):
-            page_list.append(page)
-        for page in page_list:
-            for status in page:
-                timeline.append(status)
-    else:
-        timeline = api.user_timeline(user, count=count)
+    page_list, timeline = [], []
+    # get specified number of tweets
+    # use cursor so we can get up to 3200
+    for status in tweepy.Cursor(api.user_timeline, user).items(count):
+        timeline.append(status)
     return timeline
