@@ -51,7 +51,9 @@ def get_api():
 
 def get_timeline(user, count, api):
     """Get user timeline"""
+
     page_list, timeline = [], []
+
     # get specified number of tweets
     # use cursor so we can get up to 3200
     for status in tweepy.Cursor(api.user_timeline, user).items(count):

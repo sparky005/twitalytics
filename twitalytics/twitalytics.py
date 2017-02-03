@@ -1,16 +1,20 @@
 import sys
 import argparse
+import datetime
 from .modules import *
 from .api import *
 
 
+def make_date(date_string):
+    """Convert user input to a date type"""
+    try:
+        return datetime.datetime.strptime(date_string, '%Y-%m-%d')
+    except ValueError:
+        raise argparse.ArgumentTypeError(date_string + " is not a proper date.")
+
+
 def parse_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-t", "--test",
-        action='store_true',
-        help="This is a test"
-    )
     parser.add_argument(
         "-u",
         "--users",
@@ -26,13 +30,27 @@ def parse_arguments():
         type=int,
         default=100,
         metavar="int",
-        help="Number of tweets to fetch."
+        help="Number of tweets to fetch (Default 100)"
     )
     parser.add_argument(
         "-p",
         "--print",
         action='store_true',
-        help="Print gathered tweets"
+        help="Optionally print gathered tweets"
+    )
+    parser.add_argument(
+        "--start",
+        type=make_date,
+        default='1970-01-01',
+        metavar="start_date",
+        help="Starting date for tweets in ISO 8601 format"
+    )
+    parser.add_argument(
+        "--end",
+        type=make_date,
+        default=datetime.datetime.now(),
+        metavar="end_date",
+        help="Ending date for tweets in ISO 8601 format"
     )
     if len(sys.argv) == 1:
         parser.print_help()
@@ -44,6 +62,7 @@ def parse_arguments():
 def main():
     api = get_api()
     args = parse_arguments()
+
     # do API stuff here so we only do it once per user
     for handle in args.users:
         # get information from api
@@ -54,7 +73,5 @@ def main():
             print("Error: Couldn't query tweepy API. Quitting!")
             sys.exit(1)
 
-        if args.test:
-            print("test confirmed")
-        if args.users:
-            get_general(user, timeline, args.print)
+        get_general(user, timeline, args.print)
+        
