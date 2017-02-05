@@ -25,6 +25,7 @@ def get_general(user, timeline, print_tweets):
         print("    Last tweets: ")
         for tweet in timeline:
             print("     %s" % tweet.text)
+            print("     at: %s" % tweet.created_at)
             print('\t    via %s' % tweet.source)
 
     # print newline to separate multiple users

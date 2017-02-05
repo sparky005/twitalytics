@@ -68,10 +68,9 @@ def main():
         # get information from api
         try:
             user = api.get_user(handle)
-            timeline = get_timeline(handle, args.count, api)
+            timeline = get_timeline(handle, args.count, api, args.start, args.end)
         except tweepy.TweepError:
             print("Error: Couldn't query tweepy API. Quitting!")
             sys.exit(1)
 
         get_general(user, timeline, args.print)
-        
