@@ -57,7 +57,6 @@ def get_timeline(user, count, api, start_date, end_date):
     # get specified number of tweets
     # use cursor so we can get up to 3200
     for status in tweepy.Cursor(api.user_timeline, user).items(count):
-        # TODO: convert status.creatd_at to proper datetime object
-        if (status.created_at > start_date and status.created_at < end_date):
+        if (status.created_at >= start_date and status.created_at <= end_date):
             timeline.append(status)
     return timeline

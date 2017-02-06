@@ -8,6 +8,8 @@ from .api import *
 def make_date(date_string):
     """Convert user input to a date type"""
     try:
+        # TODO: make sure datetime is at the END of the day
+        # right now if you choose 2017-02-02, you won't get any tweets from 02-02
         return datetime.datetime.strptime(date_string, '%Y-%m-%d')
     except ValueError:
         raise argparse.ArgumentTypeError(date_string + " is not a proper date.")
