@@ -37,10 +37,7 @@ def get_sources(timeline):
     """Get top devices that user tweets from"""
     sources = Counter()
     for tweet in timeline:
-        if tweet.source in sources:
-            sources[tweet.source] += 1
-        else:
-            sources[tweet.source] = 1
+        sources[tweet.source] += 1
     # TODO: what do I want to do from here? a graph?
     print(sources.most_common(10))
 
