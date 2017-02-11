@@ -31,9 +31,17 @@ def get_general(user, timeline, print_tweets):
     # print newline to separate multiple users
     print()
 
-def get_devices():
+
+def get_sources(timeline):
     """Get top devices that user tweets from"""
-    pass
+    sources = {}
+    for tweet in timeline:
+        if tweet.source in sources:
+            sources[tweet.source] += 1
+        else:
+            sources[tweet.source] = 1
+    print(sources)
+    # TODO: what do I want to do from here? a graph?
 
 
 def get_locations():

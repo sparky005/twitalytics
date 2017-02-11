@@ -39,6 +39,12 @@ def parse_arguments():
         help="Optionally print gathered tweets"
     )
     parser.add_argument(
+        "-d",
+        "--devices",
+        action='store_true',
+        help="Show most frequently used devices"
+    )
+    parser.add_argument(
         "--start",
         type=make_date,
         default='1970-01-01',
@@ -77,3 +83,5 @@ def main():
             sys.exit(1)
 
         get_general(user, timeline, args.print)
+        if(args.devices):
+            get_sources(timeline)
