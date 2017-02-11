@@ -45,6 +45,12 @@ def parse_arguments():
         help="Show most frequently used devices"
     )
     parser.add_argument(
+        "-l",
+        "--locations",
+        action='store_true',
+        help="Show most frequent locations"
+    )
+    parser.add_argument(
         "--start",
         type=make_date,
         default='1970-01-01',
@@ -85,3 +91,5 @@ def main():
         get_general(user, timeline, args.print)
         if(args.devices):
             get_sources(timeline)
+        if(args.locations):
+            get_locations(timeline)

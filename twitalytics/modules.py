@@ -45,9 +45,14 @@ def get_sources(timeline):
     print(sources.most_common(10))
 
 
-def get_locations():
+def get_locations(timeline):
     """Get top locations that user tweets from"""
-    pass
+    locations = Counter()
+    for tweet in timeline:
+        if tweet.place:
+            tweet.place.name = tweet.place.name
+            locations[tweet.place.name] += 1
+    print(locations.most_common(10))
 
 
 def get_topics():
