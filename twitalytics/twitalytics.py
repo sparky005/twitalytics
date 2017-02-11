@@ -94,7 +94,9 @@ def main():
             print("Error: Couldn't query tweepy API. Quitting!")
             sys.exit(1)
 
-        get_general(user, timeline, args.print)
+        get_user(user)
+        if(args.print):
+            print_tweets(timeline)
         if(args.devices):
             get_sources(timeline)
         if(args.locations):

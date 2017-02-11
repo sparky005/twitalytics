@@ -2,8 +2,8 @@ import locale
 from collections import Counter
 
 
-def get_general(user, timeline, print_tweets):
-    """Print general information"""
+def get_user(user):
+    """Print general user information"""
 
     # set locale
     locale.setlocale(locale.LC_ALL, '')
@@ -21,13 +21,15 @@ def get_general(user, timeline, print_tweets):
     print("    Followers: %s" % followers_count)
     print("    Following: %s" % friends_count)
 
-    # print tweets if requested
-    if print_tweets:
-        print("    Last tweets: ")
-        for tweet in timeline:
-            print("     %s" % tweet.text)
-            print("     at: %s" % tweet.created_at)
-            print('\t    via %s' % tweet.source)
+
+def print_tweets(timeline):
+    """Prints user tweets, if requested"""
+
+    print("    Last tweets: ")
+    for tweet in timeline:
+        print("     %s" % tweet.text)
+        print("     at: %s" % tweet.created_at)
+        print('\t    via %s' % tweet.source)
 
     # print newline to separate multiple users
     print()
