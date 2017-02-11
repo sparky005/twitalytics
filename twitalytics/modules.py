@@ -1,4 +1,5 @@
 import locale
+from collections import Counter
 
 
 def get_general(user, timeline, print_tweets):
@@ -34,14 +35,14 @@ def get_general(user, timeline, print_tweets):
 
 def get_sources(timeline):
     """Get top devices that user tweets from"""
-    sources = {}
+    sources = Counter()
     for tweet in timeline:
         if tweet.source in sources:
             sources[tweet.source] += 1
         else:
             sources[tweet.source] = 1
-    print(sources)
     # TODO: what do I want to do from here? a graph?
+    print(sources.most_common(10))
 
 
 def get_locations():
