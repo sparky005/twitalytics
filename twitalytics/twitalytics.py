@@ -51,6 +51,12 @@ def parse_arguments():
         help="Show most frequent locations"
     )
     parser.add_argument(
+        "-w",
+        "--words",
+        action='store_true',
+        help="Show most frequently used words."
+    )
+    parser.add_argument(
         "--start",
         type=make_date,
         default='1970-01-01',
@@ -93,3 +99,5 @@ def main():
             get_sources(timeline)
         if(args.locations):
             get_locations(timeline)
+        if(args.words):
+            get_topics(timeline)

@@ -52,9 +52,15 @@ def get_locations(timeline):
     print(locations.most_common(10))
 
 
-def get_topics():
+def get_topics(timeline):
     """Get top topics the user tweets about"""
-    pass
+    # TODO: refine so that common words get skipped
+    words = Counter()
+    for tweet in timeline:
+        for word in tweet.text.split():
+            words[word] += 1
+    print(words.most_common(10))
+
 
 
 def get_twp():
