@@ -105,9 +105,6 @@ def main():
         # use flag to ensure "last tweets" head only prints once
         print_flag = True
         for tweet in timeline:
-            # TODO: move these if statements later
-            # this way we always do all the processing and just print
-            # the requested info
             sources = get_sources(tweet, sources)
             locations = get_locations(tweet, locations)
             words = get_topics(tweet, words)
