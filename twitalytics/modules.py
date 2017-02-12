@@ -23,7 +23,6 @@ def get_user(user):
 
 def print_tweets(tweet):
     """Prints user tweets, if requested"""
-
     print("    %s" % tweet.text)
     print("    at: %s" % tweet.created_at)
     print('\t  via %s' % tweet.source)
