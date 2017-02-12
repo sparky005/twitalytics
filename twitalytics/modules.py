@@ -1,5 +1,4 @@
 import locale
-from collections import Counter
 
 
 def get_user(user):
@@ -22,46 +21,37 @@ def get_user(user):
     print("    Following: %s" % friends_count)
 
 
-def print_tweets(timeline):
+def print_tweets(tweet):
     """Prints user tweets, if requested"""
 
-    print("    Last tweets: ")
-    for tweet in timeline:
-        print("     %s" % tweet.text)
-        print("     at: %s" % tweet.created_at)
-        print('\t    via %s' % tweet.source)
+    print("    %s" % tweet.text)
+    print("    at: %s" % tweet.created_at)
+    print('\t  via %s' % tweet.source)
 
     # print newline to separate multiple users
     print()
 
 
-def get_sources(timeline):
-    """Get top devices that user tweets from"""
-    sources = Counter()
-    for tweet in timeline:
-        sources[tweet.source] += 1
-    # TODO: what do I want to do from here? a graph?
-    print(sources.most_common(10))
+def get_sources(tweet, sources):
+    """Get tweet source and add tally to collection"""
+    sources[tweet.source] += 1
+    return sources
+
+def get_locations(tweet, locations):
+    """Get tweet location and add tally to collection"""
+    if tweet.place:
+        tweet.place.name = tweet.place.name
+        locations[tweet.place.name] += 1
+    return locations
 
 
-def get_locations(timeline):
-    """Get top locations that user tweets from"""
-    locations = Counter()
-    for tweet in timeline:
-        if tweet.place:
-            tweet.place.name = tweet.place.name
-            locations[tweet.place.name] += 1
-    print(locations.most_common(10))
-
-
-def get_topics(timeline):
-    """Get top topics the user tweets about"""
+def get_topics(tweet, words):
+    """Get tweet words and add tally to collection"""
     # TODO: refine so that common words get skipped
-    words = Counter()
-    for tweet in timeline:
-        for word in tweet.text.split():
+    for word in tweet.text.split():
+        if(len(word) > 4):
             words[word] += 1
-    print(words.most_common(10))
+    return words
 
 
 

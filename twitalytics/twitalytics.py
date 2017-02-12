@@ -1,6 +1,7 @@
 import sys
 import argparse
 import datetime
+from collections import Counter
 from .modules import *
 from .api import *
 
@@ -91,15 +92,34 @@ def main():
             user = api.get_user(handle)
             timeline = get_timeline(handle, args.count, api, args.start, args.end)
         except tweepy.TweepError:
-            print("Error: Couldn't query tweepy API. Quitting!")
+            print("Error: Couldn't query twitter API. Quitting!")
             sys.exit(1)
 
+        # create some collections to hold information
+        sources = Counter()
+        locations = Counter()
+        words = Counter()
+
+        # first, print general user information
         get_user(user)
-        if(args.print):
-            print_tweets(timeline)
+        # use flag to ensure "last tweets" head only prints once
+        print_flag = True
+        for tweet in timeline:
+            # TODO: move these if statements later
+            # this way we always do all the processing and just print
+            # the requested info
+            sources = get_sources(tweet, sources)
+            locations = get_locations(tweet, locations)
+            words = get_topics(tweet, words)
+            if(args.print):
+                if(print_flag):
+                    print("\n    Last tweets: ")
+                    # make sure we don't print this header again
+                    print_flag = False
+                print_tweets(tweet)
         if(args.devices):
-            get_sources(timeline)
+            print(sources.most_common(10))
         if(args.locations):
-            get_locations(timeline)
+            print(locations.most_common(10))
         if(args.words):
-            get_topics(timeline)
+            print(words.most_common(10))
