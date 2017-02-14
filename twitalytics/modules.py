@@ -1,4 +1,5 @@
 import locale
+from nltk.corpus import stopwords
 
 
 def get_user(user):
@@ -48,7 +49,7 @@ def get_topics(tweet, words):
     """Get tweet words and add tally to collection"""
     # TODO: refine so that common words get skipped
     for word in tweet.text.split():
-        if(len(word) > 4):
+        if(not word.lower().startswith(tuple(stopwords.words('english'))) and not word.startswith(('@', 'RT'))):
             words[word] += 1
     return words
 
