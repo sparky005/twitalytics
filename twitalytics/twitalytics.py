@@ -115,7 +115,9 @@ def main():
                     print_flag = False
                 print_tweets(tweet)
         if(args.devices):
-            print(sources.most_common(10))
+            total = sum(sources.values())
+            for source in sources:
+                print('%s: %.2f%%' % (source, sources[source]/total*100))
         if(args.locations):
             print(locations.most_common(10))
         if(args.words):

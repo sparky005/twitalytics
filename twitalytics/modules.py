@@ -47,7 +47,6 @@ def get_locations(tweet, locations):
 
 def get_topics(tweet, words):
     """Get tweet words and add tally to collection"""
-    # TODO: refine so that common words get skipped
     for word in tweet.text.split():
         if(not word.lower().startswith(tuple(stopwords.words('english'))) and not word.startswith(('@', 'RT'))):
             words[word] += 1
