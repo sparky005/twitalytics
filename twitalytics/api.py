@@ -5,7 +5,7 @@ import webbrowser as wb
 from . import consumer
 
 
-def store_access_token():
+def store_access_token(token_file):
     """Get Access Token and store in .json file"""
 
     # create oauth handler
@@ -21,9 +21,8 @@ def store_access_token():
     except tweepy.TweepError:
         print("Failed to get token")
 
-    with open('twitter_credentials.json', 'w') as f:
+    with open(token_file, 'w') as f:
         # save the access token
-        # TODO: save the creds in a better place
         json.dump(access_token, f)
 
 
@@ -33,12 +32,15 @@ def get_api():
     If no token exists, get the token
     """
 
+    # get where we think the token should be stored
+    token_file = os.path.expanduser('~') + '/.twitalytics/twitter_credentials.json'
+
     # check if file exists
-    if not os.path.exists('twitter_credentials.json'):
-        store_access_token()
+    if not os.path.exists(token_file):
+        store_access_token(token_file)
 
     try:
-        with open('twitter_credentials.json') as f:
+        with open(token_file) as f:
             access_token = json.load(f)
     except FileNotFoundError:
         print("Error: couldn't find credentials file")
