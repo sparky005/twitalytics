@@ -1,5 +1,6 @@
 import locale
 from nltk.corpus import stopwords
+import pandas as pd
 
 
 def get_user(user):
@@ -54,6 +55,16 @@ def get_topics(tweet, words):
 
 
 
-def get_twp():
+def get_tweets_per_day(dates):
     """Get tweets per day"""
-    pass
+
+    # creates a series of tweets indexed by date
+    ones = [1]*len(dates)
+    idx = pd.DatetimeIndex(dates, tz='UTC')
+    idx = idx.tz_convert('US/Eastern')
+    tweets = pd.Series(ones, index=idx)
+    # counts up tweets in 1 day increments
+    tweets_per_day = tweets.resample('1D').sum().fillna(0)
+
+    # return the mean
+    return tweets_per_day.mean()

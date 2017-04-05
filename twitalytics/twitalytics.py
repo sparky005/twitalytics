@@ -71,6 +71,12 @@ def parse_arguments():
         metavar="end_date",
         help="Ending date for tweets in ISO 8601 format"
     )
+    parser.add_argument(
+        "--tweets_per_day",
+        "--tpd",
+        action='store_true',
+        help="Calculate and print average number of tweets per day",
+    )
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
@@ -99,6 +105,7 @@ def main():
         sources = Counter()
         locations = Counter()
         words = Counter()
+        dates = []
 
         # first, print general user information
         get_user(user)
@@ -108,6 +115,7 @@ def main():
             sources = get_sources(tweet, sources)
             locations = get_locations(tweet, locations)
             words = get_topics(tweet, words)
+            dates.append(tweet.created_at)
             if(args.print):
                 if(print_flag):
                     print("\n    Last tweets: ")
@@ -127,3 +135,6 @@ def main():
         if(args.words):
             # not sure if we want to do percentages here
             print(words.most_common(10))
+        if(args.tweets_per_day):
+            tpd = get_tweets_per_day(dates)
+            print('\nAverage number of tweets per day: %.2f' % tpd)
