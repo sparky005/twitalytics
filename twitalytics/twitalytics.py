@@ -114,7 +114,7 @@ def main():
         for tweet in timeline:
             sources = get_sources(tweet, sources)
             locations = get_locations(tweet, locations)
-            words = get_topics(tweet, words)
+            words = get_words(tweet, words)
             dates.append(tweet.created_at)
             if(args.print):
                 if(print_flag):
@@ -138,3 +138,5 @@ def main():
         if(args.tweets_per_day):
             tpd = get_tweets_per_day(dates)
             print('\nAverage number of tweets per day: %.2f' % tpd)
+
+        print(get_topics(timeline))

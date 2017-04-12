@@ -1,7 +1,8 @@
 import locale
 from nltk.corpus import stopwords
 import pandas as pd
-
+from .lemmas import *
+import pickle
 
 def get_user(user):
     """Print general user information"""
@@ -46,12 +47,20 @@ def get_locations(tweet, locations):
     return locations
 
 
-def get_topics(tweet, words):
+def get_words(tweet, words):
     """Get tweet words and add tally to collection"""
     for word in tweet.text.split():
         if(not word.lower().startswith(tuple(stopwords.words('english'))) and not word.startswith(('@', 'RT'))):
             words[word] += 1
     return words
+
+def get_topics(tweets):
+    """Figure out what this user tweets about"""
+    # load the classifier we built earlier
+    tweets_text = [tweet.text for tweet in tweets]
+    cl = pickle.load(open('tweet_emotion_classifier.pkl', 'rb'))
+    topics = cl.predict(tweets_text)
+    return topics
 
 
 
