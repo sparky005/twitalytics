@@ -1,7 +1,7 @@
 import locale
 from nltk.corpus import stopwords
 import pandas as pd
-import pickle
+import dill as pickle
 import os
 
 def get_user(user):
