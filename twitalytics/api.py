@@ -37,6 +37,7 @@ def get_api():
 
     # check if file exists
     if not os.path.exists(token_file):
+        os.makedirs(os.path.expanduser('~' + '/.twitalytics'))
         store_access_token(token_file)
 
     try:
