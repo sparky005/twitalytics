@@ -11,6 +11,7 @@ setup(name="Twitalytics",
       author_email='sparky.005@gmail.com',
       license='MIT',
       packages=['twitalytics'],
+      package_data={'': ['tweet_emotion_classifier.pkl']}
       zip_safe=False,
       install_requires = install_requires,
       entry_points="""
