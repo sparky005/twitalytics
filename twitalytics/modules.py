@@ -1,8 +1,8 @@
 import locale
 from nltk.corpus import stopwords
 import pandas as pd
-from .lemmas import *
 import pickle
+import os
 
 def get_user(user):
     """Print general user information"""
@@ -57,12 +57,11 @@ def get_words(tweet, words):
 def get_topics(tweets):
     """Figure out what this user tweets about"""
     # load the classifier we built earlier
+    pickle_path = os.path.dirname(__file__) + '/tweet_emotion_classifier.pkl'
     tweets_text = [tweet.text for tweet in tweets]
-    cl = pickle.load(open('tweet_emotion_classifier.pkl', 'rb'))
+    cl = pickle.load(open(pickle_path, 'rb'))
     topics = cl.predict(tweets_text)
     return topics
-
-
 
 def get_tweets_per_day(dates):
     """Get tweets per day"""
