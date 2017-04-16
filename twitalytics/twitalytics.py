@@ -77,6 +77,12 @@ def parse_arguments():
         action='store_true',
         help="Calculate and print average number of tweets per day",
     )
+    parser.add_argument(
+        "-t",
+        "--topics",
+        action='store_true',
+        help="Show most frequently tweeted topics."
+    )
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
@@ -138,5 +144,9 @@ def main():
         if(args.tweets_per_day):
             tpd = get_tweets_per_day(dates)
             print('\nAverage number of tweets per day: %.2f' % tpd)
+        if(args.topics):
+            topics = Counter(get_topics(timeline))
+            total = sum(topics.values())
+            for topic in topics:
+                print('%s: %.2f%%' % (topic, topics[topic]/total*100))
 
-        print(get_topics(timeline))
