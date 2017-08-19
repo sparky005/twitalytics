@@ -8,4 +8,4 @@ python:
 install: 
     - pip install nltk tweepy
 
-script: pytest
+script: py.test
