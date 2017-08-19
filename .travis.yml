@@ -6,6 +6,6 @@ python:
     - "3.5"
     - "3.6"
 install: 
-    - pip install nltk tweepy pandas dill
+    - pip install nltk tweepy pandas dill vcrpy 
 
 script: py.test
