@@ -1,7 +1,7 @@
 from setuptools import setup
 
 # requirements
-install_requires = ["tweepy", "nltk"]
+install_requires = ["tweepy", "nltk", "dill", "pandas"]
 
 setup(name="Twitalytics",
       version='0.1',
