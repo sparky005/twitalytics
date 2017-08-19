@@ -54,14 +54,14 @@ def get_words(tweet, words):
             words[word] += 1
     return words
 
-def get_topics(tweets):
-    """Figure out what this user tweets about"""
+def get_sentiment(tweets):
+    """Figure out positive/negative spread"""
     # load the classifier we built earlier
     pickle_path = os.path.dirname(__file__) + '/tweet_emotion_classifier.pkl'
     tweets_text = [tweet.text for tweet in tweets]
     cl = pickle.load(open(pickle_path, 'rb'))
-    topics = cl.predict(tweets_text)
-    return topics
+    sent = cl.predict(tweets_text)
+    return sent
 
 def get_tweets_per_day(dates):
     """Get tweets per day"""
