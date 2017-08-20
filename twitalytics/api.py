@@ -38,11 +38,14 @@ def get_api():
     # try using env vars first
     # mainly here for travis CI support, but you can use it
     # if you want
-    if os.environ.get('TWITTER_KEY') and os.environ.get('TWITTER_SECRET'):
+    if ( os.environ.get('TWITTER_KEY') and os.environ.get('TWITTER_SECRET')
+        and os.environ.get('CONSUMER_KEY') and os.environ.get('CONSUMER_SECRET') ):
         # do something
         access_token = []
         access_token.append(os.environ.get('TWITTER_KEY'))
         access_token.append(os.environ.get('TWITTER_SECRET'))
+        consumer_key = os.environ.get('CONSUMER_KEY')
+        consumer_secret = os.environ.get('CONSUMER_SECRET')
     else:
         # check if file storing auth creds exists
         if not os.path.exists(token_file):
@@ -55,7 +58,10 @@ def get_api():
         except FileNotFoundError:
             print("Error: couldn't find credentials file")
 
-    auth = tweepy.OAuthHandler(consumer.CONSUMER_KEY, consumer.CONSUMER_SECRET)
+        consumer_key = consumer.CONSUMER_KEY
+        consumer_secret = consumer.CONSUMER_SECRET
+
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token[0], access_token[1])
     api = tweepy.API(auth)
     return api
