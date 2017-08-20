@@ -35,16 +35,25 @@ def get_api():
     # get where we think the token should be stored
     token_file = os.path.expanduser('~') + '/.twitalytics/twitter_credentials.json'
 
-    # check if file exists
-    if not os.path.exists(token_file):
-        os.makedirs(os.path.expanduser('~' + '/.twitalytics'))
-        store_access_token(token_file)
+    # try using env vars first
+    # mainly here for travis CI support, but you can use it
+    # if you want
+    if os.environ.get('TWITTER_KEY') and os.environ.get('TWITTER_SECRET'):
+        # do something
+        access_token = []
+        access_token.append(os.environ.get('TWITTER_KEY'))
+        access_token.append(os.environ.get('TWITTER_SECRET'))
+    else:
+        # check if file storing auth creds exists
+        if not os.path.exists(token_file):
+            os.makedirs(os.path.expanduser('~' + '/.twitalytics'))
+            store_access_token(token_file)
 
-    try:
-        with open(token_file) as f:
-            access_token = json.load(f)
-    except FileNotFoundError:
-        print("Error: couldn't find credentials file")
+        try:
+            with open(token_file) as f:
+                access_token = json.load(f)
+        except FileNotFoundError:
+            print("Error: couldn't find credentials file")
 
     auth = tweepy.OAuthHandler(consumer.CONSUMER_KEY, consumer.CONSUMER_SECRET)
     auth.set_access_token(access_token[0], access_token[1])
