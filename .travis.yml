@@ -1,11 +1,14 @@
 language: python
 python:
-    - "3.2"
-    - "3.3"
-    - "3.4"
-    - "3.5"
-    - "3.6"
-install: 
-    - pip install nltk tweepy pandas dill vcrpy 
-
+- '3.2'
+- '3.3'
+- '3.4'
+- '3.5'
+- '3.6'
+install:
+- pip install nltk tweepy pandas dill vcrpy
 script: py.test
+env:
+  global:
+  - secure: QAQBFbIOxqheu9uBJzXFoINaOkfvZhUEBPHif6loZFT32+w5THxM0cs1RtD6nfKI1VdfOSs31LzHQN2AFgAjGg24u1tDIFwfyTgFuVjq1IlA6JcGbBJ+wJRQABO/yUyuOcTZtstgg+2fyCZLDuW6PqpRXMJR1Yg2PgNN0uIK46iMzwFzwFof1wSevKwgcK7sX8/YoQd00m+TTOHupj4ScQAlOFxtHxIo7xL1U45ASyS1BOnF8v6q1z4ZG+KZQmfFyM64Ky6IrttDgDAfKyYobMYM1c/DsxW2lGVKVNqeM2wcDOGqpyDRMJoOmzm/IUtSzQ0BjwBllY5NlPs7k0RAMBO88EKbZFisNdvodFawrFTtCeCc5/nofSy30veB6coZgCHw5Q57StnNlSRJUZd4ueOFv08X+6Dyv1DounQSbjncMF5/8xf3jnaxqUK8p7z2y+AeKSBwnEqzy8T4pU2J0RvPoVslt3urbW44qT8ylokTDNSYoNbVoeugvTFC74K8yUE2GDIpLOmkeXuf2VAwfNw9WcvMRLikw2TPe+Ofh1Xbtf0++wBfcsmrWq65WNwxSKSJzTWlbzIv+4KqQz7La3atmZFWezdF20v99QNLg7mJPR8lL++VUO+CYmiuu2wlw4xl6ofuQoToRN8bygTfg3/riQJ5DVjY0hbHFdjD5G8=
+  - secure: R8oW/rvdhahU870pxOeGDOJyZmS5OBPAJ4XGRXOM/hALbUryZszWFSDnXAtI4Dgkh5+4zhuQZn9XMcpshme4ykxT5vzvVgyswjRANEYQhUuuELTlB1LmKDyw4bufNCk7XFJFaRzihSwZu7nUxob8Fh9KHadmFq8BJJfWAfu7iQgxtXKzPoHY90pOIrnghRrI3oqvPODWfS7WEfmVXhSgyAnbPe9EiMojfgdzY3u6zCU/gy9OAvxy4rMWcgJcYW8IYe4qpXUSHH+I8emzO9Jx+b8gUj8jgNJyBwZI/akK6zG9V/YzQ3wXgX3j/6NToRyjVPlPcSunwy4v4L2FoG4dpwQ/m0/Dot6oLMIsYn7v19cTKvJYrUtPOOydQQJo6Os6E18xaCRmazAEv+vAauf/HxnRwD89hXkuaO6pcn7t6rQPYbuhdQ/darZTV+lcE+lc4UejrEbK++ZKchUE+SJ3PEEsJcvGKxEoowt4U5I32CZoM6qyjSUAUZiIGhunoFeKjTcdta6nxAo87kdz15Q210geFefwTOzl6K+3L6EarLbVNkPLZnnzIINh8XxJHg5vSvozYJl+bnDQo0kgbmP1sCg4yqBfq/YrJx7YP5BKEf70MBCjP6CUmgT5FnboDcmZVkBvmnQO2I5Z55O4n5rEPNkwwTqoMoaEUTuKSyp3P/Q=
