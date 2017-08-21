@@ -15,7 +15,7 @@ def get_user(user):
     friends_count = locale.format('%d', int(user.friends_count), grouping=True)
 
     # print general user information
-    print("Information about %s: " % user.screen_name)
+    print("Information about %s:" % user.screen_name)
     print("    Real name: %s" % user.name)
     print("    Description: %s" % user.description)
     print("    Website: %s" % user.url)

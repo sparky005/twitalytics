@@ -1,0 +1,49 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Authorization: ['OAuth oauth_nonce="91234346958146584351503317800", oauth_timestamp="1503317800",
+          oauth_version="1.0", oauth_signature_method="HMAC-SHA1", oauth_consumer_key="qxlKi6AZS0EdcoEyWjnnit7of",
+          oauth_token="17431810-30g33zIPuEmZtvIPUjnuFzkD1osSnV33O1iE9Ll3o", oauth_signature="P5HWMz4p3IXG7sYRNpwkdQmOBV4%3D"']
+      Host: [api.twitter.com]
+    method: GET
+    uri: https://api.twitter.com/1.1/users/show.json?id=nytimes
+  response:
+    body: {string: '{"id":807095,"id_str":"807095","name":"The New York Times","screen_name":"nytimes","location":"New
+        York City","profile_location":null,"description":"Where the conversation begins.
+        Follow for breaking news, special reports, RTs of our journalists and more
+        from https:\/\/t.co\/YapuoqX0HS.","url":"http:\/\/t.co\/ahvuWqicF9","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/ahvuWqicF9","expanded_url":"http:\/\/www.nytimes.com\/","display_url":"nytimes.com","indices":[0,22]}]},"description":{"urls":[{"url":"https:\/\/t.co\/YapuoqX0HS","expanded_url":"http:\/\/NYTimes.com","display_url":"NYTimes.com","indices":[111,134]}]}},"protected":false,"followers_count":39082046,"friends_count":883,"listed_count":189982,"created_at":"Fri
+        Mar 02 20:41:42 +0000 2007","favourites_count":15287,"utc_offset":-14400,"time_zone":"Eastern
+        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":288845,"lang":"en","status":{"created_at":"Mon
+        Aug 21 12:15:05 +0000 2017","id":899605777316544513,"id_str":"899605777316544513","text":"Collisions
+        of two ships are considered rare https:\/\/t.co\/hZcQBIqAwF","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/hZcQBIqAwF","expanded_url":"http:\/\/nyti.ms\/2v67gPb","display_url":"nyti.ms\/2v67gPb","indices":[44,67]}]},"source":"\u003ca
+        href=\"http:\/\/www.socialflow.com\" rel=\"nofollow\"\u003eSocialFlow\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":6,"favorite_count":11,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":true,"profile_background_color":"131516","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/736339684\/948f072cc2da4e3a5e9f2ebfb3b1a0e7.png","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/736339684\/948f072cc2da4e3a5e9f2ebfb3b1a0e7.png","profile_background_tile":true,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/897107944474460165\/YgwPfNUU_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/897107944474460165\/YgwPfNUU_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/807095\/1502722257","profile_link_color":"607696","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"EFEFEF","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'}
+    headers:
+      cache-control: ['no-cache, no-store, must-revalidate, pre-check=0, post-check=0']
+      content-disposition: [attachment; filename=json.json]
+      content-length: ['2844']
+      content-type: [application/json;charset=utf-8]
+      date: ['Mon, 21 Aug 2017 12:16:40 GMT']
+      expires: ['Tue, 31 Mar 1981 05:00:00 GMT']
+      last-modified: ['Mon, 21 Aug 2017 12:16:40 GMT']
+      pragma: [no-cache]
+      server: [tsa_b]
+      set-cookie: ['personalization_id="v1_1kE00sFGHL5Fl9ZzxMo/rg=="; Expires=Wed,
+          21 Aug 2019 12:16:40 UTC; Path=/; Domain=.twitter.com', lang=en; Path=/,
+        'guest_id=v1%3A150331780050817641; Expires=Wed, 21 Aug 2019 12:16:40 UTC;
+          Path=/; Domain=.twitter.com']
+      status: [200 OK]
+      strict-transport-security: [max-age=631138519]
+      x-access-level: [read-write-directmessages]
+      x-connection-hash: [d639103b0036b36cdf837c634b3ee4a1]
+      x-content-type-options: [nosniff]
+      x-frame-options: [SAMEORIGIN]
+      x-rate-limit-limit: ['900']
+      x-rate-limit-remaining: ['898']
+      x-rate-limit-reset: ['1503318564']
+      x-response-time: ['63']
+      x-transaction: [00c4d68100cede90]
+      x-twitter-response-tags: [BouncerCompliant]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1
