@@ -5,8 +5,9 @@ python:
 - '3.5'
 - '3.6'
 install:
-- pip install nltk tweepy pandas dill vcrpy
-script: py.test
+- pip install nltk tweepy pandas dill vcrpy python-coveralls pytest-cov
+script: pytest -v --cov . --cov-report term-missing
+after_success: coveralls
 env:
   global:
   - secure: QAQBFbIOxqheu9uBJzXFoINaOkfvZhUEBPHif6loZFT32+w5THxM0cs1RtD6nfKI1VdfOSs31LzHQN2AFgAjGg24u1tDIFwfyTgFuVjq1IlA6JcGbBJ+wJRQABO/yUyuOcTZtstgg+2fyCZLDuW6PqpRXMJR1Yg2PgNN0uIK46iMzwFzwFof1wSevKwgcK7sX8/YoQd00m+TTOHupj4ScQAlOFxtHxIo7xL1U45ASyS1BOnF8v6q1z4ZG+KZQmfFyM64Ky6IrttDgDAfKyYobMYM1c/DsxW2lGVKVNqeM2wcDOGqpyDRMJoOmzm/IUtSzQ0BjwBllY5NlPs7k0RAMBO88EKbZFisNdvodFawrFTtCeCc5/nofSy30veB6coZgCHw5Q57StnNlSRJUZd4ueOFv08X+6Dyv1DounQSbjncMF5/8xf3jnaxqUK8p7z2y+AeKSBwnEqzy8T4pU2J0RvPoVslt3urbW44qT8ylokTDNSYoNbVoeugvTFC74K8yUE2GDIpLOmkeXuf2VAwfNw9WcvMRLikw2TPe+Ofh1Xbtf0++wBfcsmrWq65WNwxSKSJzTWlbzIv+4KqQz7La3atmZFWezdF20v99QNLg7mJPR8lL++VUO+CYmiuu2wlw4xl6ofuQoToRN8bygTfg3/riQJ5DVjY0hbHFdjD5G8=
