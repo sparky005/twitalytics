@@ -65,5 +65,3 @@ def test_get_sources(timeline):
     assert set(['SocialFlow', 'TweetDeck']).issubset(sources)
     assert sum(sources.values()) == 100
     keys = list(sources.keys())
-    assert keys[0] == 'SocialFlow'
-    assert keys[1] == 'TweetDeck'
