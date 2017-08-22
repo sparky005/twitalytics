@@ -4,6 +4,8 @@ import vcr
 import tweepy
 import datetime
 from collections import Counter
+import sklearn
+import textblob
 
 @pytest.fixture
 @vcr.use_cassette('tests/vcr_cassettes/timeline.yml')
@@ -79,3 +81,8 @@ def test_get_words(timeline):
     assert 'eclipse' in words
     assert 'new' in words
     assert 'U.S.' in words
+
+def test_get_sentiment(timeline):
+    sentiment = modules.get_sentiment(timeline)
+    assert set(['positive', 'negative']).issubset(sentiment)
+    assert sum(sentiment.values()) == 100

@@ -3,6 +3,7 @@ from nltk.corpus import stopwords
 import pandas as pd
 import dill as pickle
 import os
+from collections import Counter
 
 def get_user(user):
     """Print general user information"""
@@ -61,7 +62,7 @@ def get_sentiment(tweets):
     tweets_text = [tweet.text for tweet in tweets]
     cl = pickle.load(open(pickle_path, 'rb'))
     sent = cl.predict(tweets_text)
-    return sent
+    return Counter(sent)
 
 def get_tweets_per_day(dates):
     """Get tweets per day"""

@@ -145,7 +145,7 @@ def main():
             tpd = get_tweets_per_day(dates)
             print('\nAverage number of tweets per day: %.2f' % tpd)
         if(args.sentiment):
-            sentiments = Counter(get_sentiment(timeline))
+            sentiments = get_sentiment(timeline)
             total = sum(sentiments.values())
             for sentiment in sentiments:
                 print('%s: %.2f%%' % (sentiment, sentiments[sentiment]/total*100))
