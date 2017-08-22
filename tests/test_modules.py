@@ -65,3 +65,17 @@ def test_get_sources(timeline):
     assert set(['SocialFlow', 'TweetDeck']).issubset(sources)
     assert sum(sources.values()) == 100
     keys = list(sources.keys())
+
+def test_get_locations(timeline):
+    #TODO: get a timeline with some locations
+    pass
+
+def test_get_words(timeline):
+    words = Counter()
+    for tweet in timeline:
+        modules.get_words(tweet, words)
+
+    assert len(words.most_common(5)) == 5
+    assert 'eclipse' in words
+    assert 'new' in words
+    assert 'U.S.' in words
