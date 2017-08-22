@@ -1,7 +1,7 @@
 from setuptools import setup
 
 # requirements
-install_requires = ["tweepy", "nltk", "dill", "pandas"]
+install_requires = ["tweepy", "nltk", "dill", "pandas", "textblob", "scikit-learn==0.18.1"]
 
 setup(name="Twitalytics",
       version='0.1',
