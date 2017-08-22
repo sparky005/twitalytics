@@ -8,6 +8,7 @@ install:
 before_script:
 - python -m nltk.downloader stopwords
 - python -m nltk.downloader punkt
+- python -m nltk.downloader wordnet
 script: pytest -v --cov . --cov-report term-missing
 after_success: coveralls
 env:
