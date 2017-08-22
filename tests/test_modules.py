@@ -2,6 +2,7 @@ from twitalytics import modules, api
 import pytest
 import vcr
 import tweepy
+import datetime
 
 @pytest.fixture
 @vcr.use_cassette('tests/vcr_cassettes/timeline.yml')
@@ -40,4 +41,16 @@ def test_get_user(client_api, capsys):
     modules.get_user(user)
     out, err = capsys.readouterr()
     out = out.strip()
+    assert out == desired_output
+
+def test_print_tweets(timeline, capsys):
+    desired_output = """    RT @maggieNYT: Bannon was set for a relatively smooth exit. Then Charlottesville happened. w @jwpetersNYT https://t.co/V7AciakOA8
+    at: 2017-08-21 02:22:49
+	  via SocialFlow
+
+"""
+    assert len(timeline) == 100, "Make sure timeline is the right length"
+    modules.print_tweets(timeline[0])
+    out, err = capsys.readouterr()
+    modules.print_tweets(timeline[0])
     assert out == desired_output
