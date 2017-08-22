@@ -5,7 +5,9 @@ python:
 - '3.6'
 install:
 - pip install nltk tweepy pandas dill vcrpy python-coveralls pytest-cov textblob scikit-learn==0.18.1 scipy
-before_script: python -m nltk.downloader stopwords
+before_script:
+- python -m nltk.downloader stopwords
+- python -m nltk.downloader punkt
 script: pytest -v --cov . --cov-report term-missing
 after_success: coveralls
 env:
