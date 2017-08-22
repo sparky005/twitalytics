@@ -3,6 +3,7 @@ import pytest
 import vcr
 import tweepy
 import datetime
+from collections import Counter
 
 @pytest.fixture
 @vcr.use_cassette('tests/vcr_cassettes/timeline.yml')
@@ -52,5 +53,17 @@ def test_print_tweets(timeline, capsys):
     assert len(timeline) == 100, "Make sure timeline is the right length"
     modules.print_tweets(timeline[0])
     out, err = capsys.readouterr()
-    modules.print_tweets(timeline[0])
     assert out == desired_output
+
+def test_get_sources(timeline):
+    sources = Counter()
+    for tweet in timeline:
+        modules.get_sources(tweet, sources)
+
+    assert isinstance(sources, Counter)
+    assert len(sources) == 2
+    assert set(['SocialFlow', 'TweetDeck']).issubset(sources)
+    assert sum(sources.values()) == 100
+    keys = list(sources.keys())
+    assert keys[0] == 'SocialFlow'
+    assert keys[1] == 'TweetDeck'
