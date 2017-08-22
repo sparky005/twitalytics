@@ -86,3 +86,10 @@ def test_get_sentiment(timeline):
     sentiment = modules.get_sentiment(timeline)
     assert set(['positive', 'negative']).issubset(sentiment)
     assert sum(sentiment.values()) == 100
+
+def test_get_tweets_per_day(timeline):
+    dates = [tweet.created_at for tweet in timeline]
+    mean  = modules.get_tweets_per_day(dates)
+    assert isinstance(mean, float)
+    assert mean == 50
+
