@@ -70,7 +70,11 @@ def test_get_sources(timeline):
 
 def test_get_locations(timeline):
     #TODO: get a timeline with some locations
-    pass
+    locations = Counter()
+    for tweet in timeline:
+        modules.get_locations(tweet, locations)
+    assert isinstance(locations, Counter)
+    assert len(locations) == 0
 
 def test_get_words(timeline):
     words = Counter()
