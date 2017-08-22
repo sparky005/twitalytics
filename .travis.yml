@@ -1,7 +1,5 @@
 language: python
 python:
-- '3.4'
-- '3.5'
 - '3.6'
 install:
 - pip install nltk tweepy pandas dill vcrpy python-coveralls pytest-cov textblob scikit-learn==0.18.1 scipy
