@@ -14,8 +14,8 @@ def make_date(date_string):
         raise argparse.ArgumentTypeError(date_string + " is not a proper date.")
 
 
-def parse_arguments():
-    parser = argparse.ArgumentParser()
+def parse_arguments(argv):
+    parser = argparse.ArgumentParser(argv)
     parser.add_argument(
         "-u",
         "--users",
@@ -90,9 +90,9 @@ def parse_arguments():
     return args
 
 
-def main():
+def main(argv=None):
     api = get_api()
-    args = parse_arguments()
+    args = parse_arguments(argv)
 
     # fix off by one error on end date
     args.end += datetime.timedelta(days=1)
