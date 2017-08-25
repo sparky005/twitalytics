@@ -1,7 +1,25 @@
 from setuptools import setup
+from setuptools.command.develop import develop
+from setuptools.command.install import install
+import nltk
 
 # requirements
 install_requires = ["tweepy", "nltk", "dill", "pandas", "textblob", "scikit-learn==0.18.1", "scipy"]
+
+class PostDevelopCommand(develop):
+    """Post-installation for development mode."""
+    def run(self):
+        print("Install in dev mode")
+        develop.run(self)
+
+class PostInstallCommand(install):
+    """Post-installation for installation mode."""
+    def run(self):
+        print("Installing in real mode")
+        nltk.download('stopwords')
+        nltk.download('punkt')
+        nltk.download('wordnet')
+        install.run(self)
 
 setup(name="Twitalytics",
       version='0.1',
@@ -18,4 +36,11 @@ setup(name="Twitalytics",
       [console_scripts]
       twitalytics=twitalytics.twitalytics:main
       """,
+      cmdclass={
+          'develop': PostDevelopCommand,
+          'install': PostInstallCommand,
+      },
       )
+
+
+
