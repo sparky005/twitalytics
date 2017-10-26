@@ -13,11 +13,6 @@ def timeline():
     return timeline
 
 @pytest.fixture
-@vcr.use_cassette('tests/vcr_cassettes/user.yml')
-def user():
-    return client_api.get_user('nytimes')
-
-@pytest.fixture
 def client_api():
     client_api = api.get_api()
     return client_api
