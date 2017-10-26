@@ -1,12 +1,7 @@
 from twitalytics import api
 import vcr
-import pytest
 import datetime
 
-@pytest.fixture
-def client_api():
-    client_api = api.get_api()
-    return client_api
 
 @vcr.use_cassette('tests/vcr_cassettes/timeline.yml')
 def test_get_timeline(client_api):

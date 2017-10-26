@@ -14,8 +14,8 @@ def make_date(date_string):
         raise argparse.ArgumentTypeError(date_string + " is not a proper date.")
 
 
-def parse_arguments(argv):
-    parser = argparse.ArgumentParser(argv)
+def parse_arguments(args):
+    parser = argparse.ArgumentParser(args)
     parser.add_argument(
         "-u",
         "--users",
@@ -83,11 +83,10 @@ def parse_arguments(argv):
         action='store_true',
         help="Classify tweets by sentiment"
     )
-    if len(sys.argv) == 1:
-        parser.print_help()
-        sys.exit(1)
-    args = parser.parse_args()
-    return args
+    #if len(sys.argv) == 1:
+    #    parser.print_help()
+    #    sys.exit(1)
+    return parser.parse_args(args)
 
 
 def main(argv=None):
